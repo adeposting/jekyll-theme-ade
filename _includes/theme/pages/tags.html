@@ -1,0 +1,10 @@
+{%- assign default_tags_url = "/" | append: site.subdomain | append: "-by-tag" -%}
+{%- assign tags_url = site.tags.url | default: default_tags_url -%}
+{%- assign current_tags = include.tags | default: page.tags | sort -%}
+<ul class="inline">
+    {%- for tag in current_tags -%}
+    <li class="inline">
+        <a class="lowlight-color" href="{{ tags_url }}#tag-{{ tag }}">#{{ tag }}</a>
+    </li>
+    {%- endfor -%}
+</ul>

@@ -1,0 +1,7 @@
+@use "./variables" as variables;
+
+ol.inline, ul.inline, ol.inline > li, ul.inline > li {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}

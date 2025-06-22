@@ -1,0 +1,11 @@
+{{ }}
+<!-- jekyll-plugin-debug-mode -->
+<style>
+* { border: solid 1px transparent; }
+</style>
+{% if site.debug == true -%}
+<style>
+*:hover { border: grey dotted 1px; }
+</style>
+{%- endif %}
+{{ }}

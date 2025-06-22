@@ -1,0 +1,17 @@
+<header>
+    <div>
+        <div>
+            {%- include theme/site/header/image.html -%}
+        </div>
+        <div>
+            <span id="search-input-content">
+                {{ site.title }}
+            </span>
+            <input class="hidden" type="text" placeholder="Search..." id="search-input" />
+        </div>
+        <div>
+            {%- include theme/site/header/search.html -%}
+            {%- include theme/site/header/nav.html -%}
+        </div>
+    </div>
+</header>

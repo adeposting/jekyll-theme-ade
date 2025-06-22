@@ -1,0 +1,25 @@
+@use "./variables" as variables;
+
+header > div {
+    display: grid;
+    grid-template-columns: auto auto 1fr; /* First two auto-sized, third takes remaining space */
+    align-items: center; /* Align items vertically */
+    gap: 20px; /* Adjust spacing between elements */
+}
+
+header > div > div:nth-child(1) {
+    justify-self: start; /* Align first two to the left */
+}
+
+header > div > div:nth-child(2) {
+    justify-self: start; /* Align first two to the left */
+}
+
+header > div > div:nth-child(3) {
+    justify-self: end; /* Align third to the right */
+}
+
+/* Align search input to bottom */
+header input {
+    height: 100%; /* Ensures it takes full height of parent */
+}

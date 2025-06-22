@@ -1,0 +1,7 @@
+{%- query var="results" group_by="category" order_by="title" order="asc" -%}
+{%- for parent in results -%}
+{%- assign id = "category-" | append: parent.category.name -%}
+{%- assign name = parent.category.name -%}
+<h3 id="{{ id }}">{{ name }}</h3>
+{%- include theme/pages/list/unordered.html pages=parent.children -%}
+{%- endfor -%}

@@ -1,0 +1,7 @@
+{%- query var="results" group_by="tag" order_by="title" order="asc" -%}
+{%- for parent in results -%}
+{%- assign id = "tag-" | append: parent.tag.name -%}
+{%- assign name = "#" | append: parent.tag.name -%}
+<h3 id="{{ id }}">{{ name }}</h3>
+{%- include theme/pages/list/unordered.html pages=parent.children  -%}
+{%- endfor -%}

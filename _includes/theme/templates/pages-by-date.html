@@ -1,0 +1,20 @@
+{%- query var="results" group_by="year,month,day" order_by="title" order="asc" group_by_order="desc" -%}
+{%- for year_obj in results -%}
+{%- assign yyyy = year_obj.year.long_number -%}
+{%- assign id = "date-year-" | append: yyyy -%}
+{%- assign year = year_obj.year.long_number -%}
+<h3 id="{{ id }}">{{ year }}</h3>
+{%- for month_obj in year_obj.children -%}
+{%- assign yyyy_mm = yyyy | append: month_obj.month.long_number -%}
+{%- assign id = "date-month-" | append: yyyy_mm -%}
+{%- assign month = month_obj.month.long_name -%}
+<h4 id="{{ id }}"><a href="#{{ yyyy }}">{{ year }}</a> / {{ month }}</h4>
+{%- for day_obj in month_obj.children -%}
+{%- assign yyyy_mm_dd = yyyy_mm | append: day_obj.day.long_number %}
+{%- assign id = "date-day-" | append: yyyy_mm_dd -%}
+{%- assign day = day_obj.day.short_number -%}
+<h5 id="{{ id }}"><a href="#{{ yyyy }}">{{ year }}</a> / <a href="#{{ yyyy_mm }}">{{ month }}</a> / {{ day }}</h5>
+{%- include theme/pages/list/unordered.html pages=day_obj.children -%}
+{%- endfor -%}
+{%- endfor -%}
+{%- endfor -%}

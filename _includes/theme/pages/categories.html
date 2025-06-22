@@ -1,0 +1,10 @@
+{%- assign default_categories_url = "/" | append: site.subdomain | append: "-by-category" -%}
+{%- assign categories_url = site.categories.url | default: default_categories_url -%}
+{%- assign current_categories = include.categories | default: page.categories | sort -%}
+<ul class="inline">
+    {%- for category in current_categories -%}
+    <li class="inline">
+        <a class="lowlight-color" href="{{ categories_url }}#category-{{ category | downcase | replace: " /", "-" }}">{{ category }}</a>
+    </li>
+    {%- endfor -%}
+</ul>

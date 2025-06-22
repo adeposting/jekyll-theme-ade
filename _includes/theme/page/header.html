@@ -1,0 +1,17 @@
+<header>
+    {%- include theme/page/header/title.html -%}
+    {%- if page.date and page.categories and page.categories.size != 0 and page.tags and page.tags.size != 0 -%}
+    <ul>
+        {%- if page.date -%}
+        <li>Date: {%- include theme/page/header/date.html -%}</li>
+        {%- endif -%}
+        {%- if page.categories -%}
+        <li>Categories: {%- include theme/page/header/categories.html -%}</li>
+        {%- endif -%}
+        {%- if page.tags -%}
+        <li>Tags: {%- include theme/page/header/tags.html -%}</li>
+        {%- endif -%}
+    </ul>
+    {%- endif -%}
+    {%- include theme/page/header/featured_image.html -%}
+</header>

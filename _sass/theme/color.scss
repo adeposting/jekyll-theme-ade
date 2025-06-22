@@ -1,0 +1,65 @@
+@use "./variables" as variables;
+
+:root {
+    --highlight-color: #{variables.$highlight-color};
+    --lowlight-color: #{variables.$lowlight-color};
+    --background-color: #{variables.$background-color};
+    --text-color: #{variables.$text-color};
+}
+
+.highlight-color {
+    color: var(--highlight-color);
+}
+
+.lowlight-color {
+    color: var(--lowlight-color);
+}
+
+.background-color {
+    background: var(--background-color);
+}
+
+.text-color {
+    color: var(--text-color);
+}
+
+/* Apply sizes to elements */
+body {
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+code {
+    color: var(--lowlight-color);
+}
+
+a {
+    color: var(--text-color);
+}
+
+a:hover {
+    color: var(--highlight-color);
+}
+
+input, select {
+    color: var(--text-color);
+    background: var(--background-color);
+}
+
+input:focus, select:focus {
+    outline: none;
+    background: transparent;
+    box-shadow: none;
+    caret-color: var(--highlight-color);
+}
+
+select {
+    border: 1px solid var(--lowlight-color);
+    padding: 1px;
+    padding-left: 5px;
+}
+
+button {
+    background: transparent;
+    cursor: pointer;
+}

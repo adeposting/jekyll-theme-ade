@@ -1,0 +1,11 @@
+#search-output-container {
+    position: absolute;
+    top: 90px;
+    left: 8px;
+    list-style: none;
+    width: 97%;
+    margin: auto;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+}

@@ -1,0 +1,32 @@
+{{ }}
+<!-- jekyll-plugin-open-graph -->
+{% assign og_type = page.url == "/" | ternary: "website", "article" -%}
+{%- assign og_author = page.author | default: site.author | escape -%}
+{%- assign og_description = page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines | escape -%}
+{%- assign og_image = page.featured_image | default: site.featured_image | absolute_url -%}
+{%- assign og_locale = site.locale | default: 'en_US' -%}
+{%- assign og_modified_time = page.last_modified_at | default: page.date | date_to_xmlschema -%}
+{%- assign og_published_time = page.date | date_to_xmlschema -%}
+{%- assign og_site_name = site.title | escape -%}
+{%- assign og_tags = page.tags | default: page.keywords | default: site.keywords | default: '' | join: ',' | split: ',' -%}
+{%- assign og_title = page.title | default: site.title | escape -%}
+{%- assign og_type = page.url == "/" | ternary: "website", "article" -%}
+{%- assign og_url = page.url | default: site.url | absolute_url -%}
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_description }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:site_name" content="{{ og_site_name }}">
+<meta property="og:locale" content="{{ og_locale }}">
+{%- if og_type == "article" -%}
+<meta property="article:published_time" content="{{ og_published_time }}">
+<meta property="article:modified_time" content="{{ og_modified_time }}">
+<meta property="article:author" content="{{ og_author }}">
+{%- for og_tag in og_tags -%}
+{%- if og_tag != '' -%}
+<meta property="article:tag" content="{{ og_tag | strip }}">
+{%- endif -%}
+{%- endfor -%}
+{%- endif %}
+{{ }}

@@ -1,0 +1,29 @@
+<nav>
+    <button class="menu-button">
+        {%- include theme/icons/menu.html -%}
+    </button>
+    <div class="hidden menu-container">
+        <ul>
+            <li>
+                <a href="{{ site.apex_domain_url }}">ade's main site</a>
+            </li>
+            <li>
+                <a href="/">ade's notes</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="/{{ site.custom.page.type | downcase }}-by-title">{{ site.custom.page.type | downcase }} by title</a>
+            </li>
+            <li>
+                <a href="/{{ site.custom.page.type | downcase }}-by-date">{{ site.custom.page.type | downcase }} by date</a>
+            </li>
+            <li>
+                <a href="/{{ site.custom.page.type | downcase }}-by-category">{{ site.custom.page.type | downcase }} by category</a>
+            </li>
+            <li>
+                <a href="/{{ site.custom.page.type | downcase }}-by-tag">{{ site.custom.page.type | downcase }} by tag</a>
+            </li>
+        </ul>
+    </div>
+</nav>

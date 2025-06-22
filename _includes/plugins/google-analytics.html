@@ -1,0 +1,7 @@
+{{ }}
+<!-- jekyll-plugin-google-analytics -->
+{% if site.google_analytics and not site.debug-%}
+<script src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script src="/assets/plugins/google-analytics/google-analytics.js"></script>
+{%- endif %}
+{{ }}

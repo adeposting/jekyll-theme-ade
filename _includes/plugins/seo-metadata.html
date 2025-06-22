@@ -1,0 +1,39 @@
+{{ }}
+<!-- jekyll-plugin-seo-metadata -->
+{% assign seo_metadata_author = page.author | default: site.author | escape -%}
+{%- assign seo_metadata_description = page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines | escape -%}
+{%- assign seo_metadata_keywords = page.tags | default: page.keywords | default: site.keywords | default: '' | join: ',' -%}
+{%- assign seo_metadata_robots = page.robots | default: site.robots | default: 'index, follow' -%}
+{%- assign seo_metadata_url = page.url | default: site.url | absolute_url -%}
+{%- if page.url == "/" -%}
+{%- assign seo_metadata_title = site.title -%}
+{%- else -%}
+{%- assign title_delimiter = site.style.title.delimiter | default: ' - ' -%}
+{%- assign seo_metadata_title = page.title | append: title_delimiter | append: site.title -%}
+{%- endif -%}
+{%- assign seo_metadata_favicon = page.favicon | default: site.favicon | default: '/favicon.ico' -%}
+<!-- Charset -->
+<meta charset="utf-8">
+<!-- Viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Author -->
+<meta name="author" content="{{ seo_metadata_author }}">
+<!-- Description -->
+<meta name="description" content="{{ seo_metadata_description }}">
+<!-- Keywords -->
+<meta name="keywords" content="{{ seo_metadata_keywords }}">
+<!-- Robots -->
+<meta name="robots" content="{{ seo_metadata_robots }}">
+<!-- HTTP Equiv -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+{% include plugins/open-graph.html %}
+{% include plugins/twitter-card.html %}
+{% include plugins/google-site-verification.html %}
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ seo_metadata_url }}">
+<!-- Favicon -->
+<link rel="icon" href="{{ seo_metadata_favicon }}" type="image/x-icon">
+{% include plugins/google-analytics.html %}
+<!-- Title -->
+<title>{{ seo_metadata_title }}</title>
+{{ }}

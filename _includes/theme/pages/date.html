@@ -1,0 +1,14 @@
+{%- assign default_dates_url = "/" | append: site.subdomain | append: "-by-date" -%}
+{%- assign dates_url = site.dates.url | default: default_dates_url -%}
+{%- assign current_date = include.date | default: page.date -%}
+{%- assign yyyy = current_date | date: "%Y" -%}
+{%- assign yyyy_mm = current_date | date: "%Y-%m" -%}
+{%- assign yyyy_mm_dd = current_date | date: "%Y-%m-%d" -%}
+{%- assign year = current_date | date: "%Y" -%}
+{%- assign month = current_date | date: "%B" -%}
+{%- assign day = current_date | date: "%d" -%}
+<datetime datetime="{{ current_date | date_to_xmlschema }}">
+    <a class="lowlight-color" href="{{ dates_url }}#date-month-{{ yyyy_mm }}">{{ month }}</a>
+    <a class="lowlight-color" href="{{ dates_url }}#date-day-{{ yyyy_mm_dd }}">{{ day }}</a>,
+    <a class="lowlight-color" href="{{ dates_url }}#date-year-{{ yyyy }}">{{ year }}</a>
+</datetime>

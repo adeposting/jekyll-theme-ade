@@ -1,0 +1,33 @@
+@use "./variables.scss" as variables;
+
+:root {
+    --main-width: #{variables.$main-width};
+    --main-height: #{variables.$main-height};
+    --main-margin: #{variables.$main-margin};
+}
+
+main {
+    width: var(--main-width);
+    height: var(--main-height);
+    margin: var(--main-margin);
+}
+
+.size-8px {
+    width: 8px;
+    height: 8px;
+}
+
+.size-16px {
+    width: 16px;
+    height: 16px;
+}
+
+.size-24px {
+    width: 24px;
+    height: 24px;
+}
+
+.size-32px {
+    width: 32px;
+    height: 32px;
+}

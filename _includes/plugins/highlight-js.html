@@ -1,0 +1,12 @@
+{{ }}
+<!-- jekyll-plugin-highlight-js -->
+{% if site.highlight_js and site.highlight_js.theme -%}
+{%- assign highlight_js_theme = site.highlight_js_theme -%}
+{%- else -%}
+{%- assign highlight_js_theme = "github-dark" -%}
+{%- endif -%}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/{{ highlight_js_theme }}.min.css">
+<script type="application/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+<link rel="stylesheet" href="/assets/plugins/highlight-js/css/highlight-js.css">
+<script type="application/javascript" src="/assets/plugins/highlight-js/js/highlight-js.js"></script>
+{{ }}

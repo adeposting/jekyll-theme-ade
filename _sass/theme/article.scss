@@ -1,0 +1,5 @@
+@use "./variables" as variables;
+
+article > ul > li {
+    margin-top: 10px;
+}

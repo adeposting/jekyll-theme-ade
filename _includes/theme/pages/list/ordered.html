@@ -1,0 +1,12 @@
+<ol>
+    {%- for page in include.pages -%}
+    {%- if page.title and page.date and page.tags and page.categories -%}
+    <li>
+        {%- include theme/pages/title.html page=page -%}
+        {%- include theme/pages/date.html page=page -%}
+        {%- include theme/pages/categories.html page=page -%}
+        {%- include theme/pages/tags.html page=page -%}
+    </li>
+    {%- endif -%}
+    {%- endfor -%}
+</ol>

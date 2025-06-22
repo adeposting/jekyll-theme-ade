@@ -1,0 +1,56 @@
+@use "./variables" as variables;
+
+:root {
+    --font-scale-factor: #{variables.$font-scale-factor};
+    /* Scaling factor for each level up */
+    --default-font-size: #{variables.$default-font-size};
+    /* Base size for smallest text elements */
+
+    /* Increase sizes progressively */
+    --h6-font-size: calc(var(--default-font-size) * var(--font-scale-factor));
+    --h5-font-size: calc(var(--h6-font-size) * var(--font-scale-factor));
+    --h4-font-size: calc(var(--h5-font-size) * var(--font-scale-factor));
+    --h3-font-size: calc(var(--h4-font-size) * var(--font-scale-factor));
+    --h2-font-size: calc(var(--h3-font-size) * var(--font-scale-factor));
+    --h1-font-size: calc(var(--h2-font-size) * var(--font-scale-factor));
+
+    /* Use smaller font sizes for certain elements */
+    --footer-font-size: calc(var(--default-font-size) / var(--font-scale-factor));
+}
+
+/* Apply sizes to elements */
+body {
+    font-size: var(--default-font-size);
+}
+
+input {
+    font-size: var(--default-font-size);
+}
+
+h6 {
+    font-size: var(--h6-font-size);
+}
+
+h5 {
+    font-size: var(--h5-font-size);
+}
+
+h4 {
+    font-size: var(--h4-font-size);
+}
+
+h3 {
+    font-size: var(--h3-font-size);
+}
+
+h2 {
+    font-size: var(--h2-font-size);
+}
+
+h1 {
+    font-size: var(--h1-font-size);
+}
+
+body > footer {
+    font-size: var(--footer-font-size);
+}

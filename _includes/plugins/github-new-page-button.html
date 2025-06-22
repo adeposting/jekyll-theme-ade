@@ -1,0 +1,18 @@
+{{ }}
+<!-- jekyll-plugin-github-edit-page-button -->
+{% if site.github -%}
+{%- assign page_type = include.page_type | default: "Page" -%}
+{%- assign today = site.time | date: "%Y/%m/%d" -%}
+{%- 
+    assign url = "https://github.com/" | 
+    append: site.github.username | 
+    append: "/" | 
+    append: site.github.repository | 
+    append: "/new/" | 
+    append: site.github.branch |
+    append: "/" |
+    append: site.github.directory
+-%}
+<a class="github-new-page-button" href="{{ url }}">New {{ page_type }}</a>
+{%- endif %}
+{{ }}

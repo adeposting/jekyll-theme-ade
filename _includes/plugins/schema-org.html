@@ -1,0 +1,85 @@
+{{ }}
+<!-- jekyll-plugin-schema-org -->
+{% if page.url == "/" -%} 
+{%- assign schema_org_type = "WebSite" -%}
+{%- elsif page.collection == "posts" -%}
+{%- assign schema_org_type = "BlogPosting" -%}
+{%- else -%}
+{%- assign schema_org_type = "WebPage" -%}
+{%- endif -%}
+{%- assign schema_org_author = page.author | default: site.author | escape -%}
+{%- assign schema_org_date = page.date | date_to_xmlschema -%}
+{%- assign schema_org_description = page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines | escape -%}
+{%- assign schema_org_featured_image = page.featured_image | default: site.featured_image |  absolute_url -%}
+{%- assign schema_org_keywords = page.tags | default: page.keywords | default: site.keywords | default: '' | join: ',' -%}
+{%- assign schema_org_last_modified_at = page.last_modified_at | default: page.date | date_to_xmlschema -%}
+{%- assign schema_org_logo = site.logo | default: 'logo.png' | absolute_url -%}
+{%- assign schema_org_site_url = site.title | escape -%}
+{%- assign schema_org_site_url = site.url -%}
+{%- assign schema_org_title = page.title | default: site.title | escape -%}
+{%- assign schema_org_url = page.url | default: site.url | absolute_url -%}
+{%- case schema_org_type -%}
+{%- when 'Website' -%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "{{ schema_org_type }}",
+    "url": "{{ schema_org_url }}",
+    "name": "{{ schema_org_site_title }}",
+    "description": "{{ schema_org_description }}"
+}
+</script>
+{%- when 'BlogPosting' -%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "{{ schema_org_type }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ schema_org_url }}"
+    },
+    "isPartOf": {
+        "@type": "WebSite",
+        "name": "{{ schema_org_site_title }}",
+        "url": "{{ schema_org_site_url }}"
+    },
+    "headline": "{{ schema_org_title }}",
+    "description": "{{ schema_org_description }}",
+    "datePublished": "{{ schema_org_date }}",
+    "dateModified": "{{ schma_org_last_modified_at }}",
+    "author": {
+        "@type": "Person",
+        "name": "{{ schema_org_author }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ schema_org_site_title }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ schema_org_logo }}"
+        }
+    },
+    "url": "{{ schema_org_url }}",
+    "image": [
+        "{{ schema_org_featured_image }}"
+    ],
+    "keywords": "{{ schema_org_keywords }}"
+}
+</script>
+{%- when 'WebPage' -%}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "{{ schema_org_type }}",
+    "url": "{{ schema_org_url }}",
+    "name": "{{ schema_org_title }}",
+    "description": "{{ schema_org_description }}",
+    "isPartOf": {
+        "@type": "WebSite",
+        "url": "{{ schema_org_site_url }}",
+        "name": "{{ schema_org_site_title }}"
+    }
+}
+</script>
+{%- endcase %}
+{{ }}

@@ -1,0 +1,9 @@
+@use "./variables" as variables;
+
+:root {
+    --unordered-list-style-type: '· ';
+}
+
+li {
+    list-style-type: var(--unordered-list-style-type);
+}

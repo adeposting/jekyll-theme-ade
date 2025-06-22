@@ -1,0 +1,17 @@
+{{ }}
+<!-- jekyll-plugin-github-edit-page-button -->
+{% if site.github -%}
+{%- assign page_type = include.page_type | default: "Page" -%}
+{%- 
+    assign url = "https://github.com/" | 
+    append: site.github.username | 
+    append: "/" | 
+    append: site.github.repository | 
+    append: "/edit/" | 
+    append: site.github.branch | 
+    append: "/" | 
+    append: page.path 
+-%}
+<a class="github-edit-page-button" href="{{ url }}">Edit {{ page_type }}</a>
+{%- endif %}
+{{ }}
