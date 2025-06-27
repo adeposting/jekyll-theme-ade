@@ -10,3 +10,5 @@
 @use "./article" as article;
 @use "./hidden" as hidden;
 @use "./images" as images;
+@use "./home" as home;
+@use "./favicon" as favicon; // must be down here to override the default img size
