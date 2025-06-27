@@ -1,0 +1,2 @@
+{%- assign sorted_pages = site.pages | where_exp: "page", "page.title and page.date and page.tags and page.categories" | sort: "date" | reverse -%}
+{%- include theme/pages/list/unordered.html pages=sorted_pages %} 
