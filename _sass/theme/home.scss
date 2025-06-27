@@ -1,0 +1,127 @@
+.home {
+    
+    .container {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        .left-section {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .right-section {
+            flex: 1;
+            min-width: 300px;
+            
+            h2 {
+                margin-top: 0;
+                margin-bottom: 20px;
+                font-size: 1.5em;
+            }
+        }
+
+        .box {
+            padding: 20px;
+            text-align: left;
+            min-width: 0; /* Allow flex items to shrink below content size */
+        }
+
+        .left-section .box {
+            padding: 20px;
+        }
+
+        .right-section .box {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.02);
+            border-radius: 8px;
+        }
+
+        .icon {
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 5%;
+            word-wrap: break-word;
+        }
+
+        .icon-container a {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            width: 33vw;
+            height: 33vw;
+            min-height: 170px;
+            min-width: 170px;
+            max-height: 250px;
+            max-width: 250px;
+        }
+
+        img.size-24px {
+            margin: 0;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            min-height: 24px;
+            min-width: 24px;
+            max-height: 24px;
+            max-width: 24px;
+        }
+    }
+
+    @media (max-width: 900px) {
+        .container {
+            flex-direction: column;
+            align-items: stretch;
+            
+            .left-section {
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .right-section {
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        .container .left-section {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .container img {
+            width: 200px;
+            height: 200px;
+            min-width: 200px;
+            min-height: 200px;
+        }
+    }
+
+    @media (max-width: 400px) {
+        .container img {
+            width: 150px;
+            height: 150px;
+            min-width: 150px;
+            min-height: 150px;
+        }
+    }
+} 
