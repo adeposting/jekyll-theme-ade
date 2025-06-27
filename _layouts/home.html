@@ -1,0 +1,36 @@
+---
+layout: page
+---
+
+<div class="home">
+    <h1>{{ page.title }}</h1>
+    <p>
+        {{ page.description }}
+    </p>
+    <div class="container">
+        <div class="left-section">
+            <div class="box">
+                <img src="/assets/images/featured_image.jpg" alt="{{ site.title | escape }}">
+            </div>
+            <div class="box">
+                <ul>
+                    {{ content }} 
+                    <li class="icon-container">
+                        {%- include theme/icons/github.html class="size-24px" -%}
+                        <a href="https://github.com/{{ site.github.username }}">@{{ site.github.username }}</a>
+                    </li>
+                    <li class="icon-container">
+                        {%- include theme/icons/twitter.html class="size-24px" -%}
+                        <a href="https://x.com/{{ site.twitter.username }}">@{{ site.twitter.username }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="box">
+                {%- include theme/templates/list-of-pages.html -%}
+            </div>
+        </div>
+    </div>
+    
+</div>
