@@ -1,0 +1,14 @@
+.git
+.bundle
+log
+log/*
+tmp
+tmp/*
+.rspec
+rspec.log
+.docker
+node_modules
+vendor/bundle
+.DS_Store
+*.swp
+*.swo 

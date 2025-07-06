@@ -15,5 +15,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll", "~> 4.3"
   spec.add_runtime_dependency "nokogiri", "~> 1.12"
 
+  spec.add_development_dependency 'rspec'
+
   spec.metadata["jekyll-theme"] = "true"
 end

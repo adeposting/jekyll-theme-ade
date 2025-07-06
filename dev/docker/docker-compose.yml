@@ -1,0 +1,10 @@
+services:
+  jekyll-theme-ade-test:
+    build:
+      context: ../../
+      dockerfile: dev/docker/Dockerfile
+    image: jekyll-theme-ade-test
+    container_name: jekyll-theme-ade-test
+    working_dir: /home/docker/jekyll-theme-ade
+    user: docker
+    command: bash -c 'bundle exec rspec 2>&1 | tee rspec.log' 
