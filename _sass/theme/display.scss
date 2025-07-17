@@ -1,0 +1,12 @@
+.display-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(72px, 1fr));
+    gap: 8px; /* adjust spacing as desired */
+}
+
+.display-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+

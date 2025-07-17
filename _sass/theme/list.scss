@@ -1,4 +1,5 @@
 @use "./variables" as variables;
+@use "./color" as color;
 
 :root {
     --unordered-list-style-type: '· ';
@@ -6,4 +7,10 @@
 
 li {
     list-style-type: var(--unordered-list-style-type);
+}
+
+
+.page-description {
+    font-style: italic;
+    padding-left: 2.5%
 }

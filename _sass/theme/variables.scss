@@ -4,11 +4,22 @@ $default-font-family: monospace;
 $font-scale-factor: 1.125;
 $default-font-size: 16px;
 /* Color variables */
-$highlight-color: deeppink;
+$highlight-color: #ff1493;
 $lowlight-color: #aaa;
 $background-color: black;
 $text-color: white;
+$secondary-color: #92f814;
+$tertiary-color: #33aadd;
+/* Color variables (alternative) */
+$color-light-white: #ffffff;
+$color-light-gray: #606060;
+$color-dark-gray: #3f3f3f;
+$color-dark-black: #000000;
+$color-primary: #ff1493;
+$color-secondary: #92f814;
+$color-tertiary: #33aadd;
 /* Size variables */
 $main-width: 90%;
 $main-height: 100%;
 $main-margin: 0 auto;
+

@@ -1,12 +1,27 @@
 <ul>
-    {%- for page in include.pages -%}
+  {%- for page in include.pages -%}
     {%- if page.title and page.date and page.tags and page.categories -%}
-    <li>
-        {%- include theme/pages/title.html page=page -%}
-        {%- include theme/pages/date.html page=page -%}
-        {%- include theme/pages/categories.html page=page -%}
-        {%- include theme/pages/tags.html page=page -%}
-    </li>
+      <li>
+        {%- unless include.hide_title == "true" -%}
+          {%- include theme/pages/title.html page=page -%}
+        {%- endunless -%}
+
+        {%- unless include.hide_date == "true" -%}
+          {%- include theme/pages/date.html page=page -%}
+        {%- endunless -%}
+
+        {%- unless include.hide_categories == "true" -%}
+          {%- include theme/pages/categories.html page=page -%}
+        {%- endunless -%}
+
+        {%- unless include.hide_tags == "true" -%}
+          {%- include theme/pages/tags.html page=page -%}
+        {%- endunless -%}
+
+        {%- if include.show_description == "true" -%}
+          {%- include theme/pages/description.html page=page -%}
+        {%- endif -%}
+      </li>
     {%- endif -%}
-    {%- endfor -%}
+  {%- endfor -%}
 </ul>

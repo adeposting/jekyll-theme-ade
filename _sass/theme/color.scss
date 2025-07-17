@@ -5,6 +5,15 @@
     --lowlight-color: #{variables.$lowlight-color};
     --background-color: #{variables.$background-color};
     --text-color: #{variables.$text-color};
+    --secondary-color: #{variables.$secondary-color};
+    --tertiary-color: #{variables.$tertiary-color};
+    --color-light-white: #{variables.$color-light-white};
+    --color-light-gray: #{variables.$color-light-gray};
+    --color-dark-gray: #{variables.$color-dark-gray};
+    --color-dark-black: #{variables.$color-dark-black};
+    --color-primary: #{variables.$color-primary};
+    --color-secondary: #{variables.$color-secondary};
+    --color-tertiary: #{variables.$color-tertiary};
 }
 
 .highlight-color {
@@ -23,7 +32,63 @@
     color: var(--text-color);
 }
 
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.tertiary-color {
+    color: var(--tertiary-color);
+}
+
+// MIXINS
+@mixin text-color($color-var) {
+  color: var(--color-#{$color-var});
+}
+
+@mixin text-border-color($color-var) {
+  text-shadow:
+    -1px -1px 0 var(--color-#{$color-var}),
+     1px -1px 0 var(--color-#{$color-var}),
+    -1px  1px 0 var(--color-#{$color-var}),
+     1px  1px 0 var(--color-#{$color-var});
+}
+
+@mixin background-color($color-var) {
+  background-color: var(--color-#{$color-var});
+}
+
+@mixin border-color($color-var) {
+  border: 1px solid var(--color-#{$color-var});
+}
+
+// COLOR LIST
+$colors: light-white, light-gray, dark-gray, dark-black, primary, secondary, tertiary;
+
+// GENERATE CLASSES
+@each $color in $colors {
+  .text-color-#{$color} {
+    @include text-color($color);
+  }
+
+  .text-border-color-#{$color} {
+    @include text-border-color($color);
+  }
+
+  .background-color-#{$color} {
+    @include background-color($color);
+  }
+
+  .border-color-#{$color} {
+    @include border-color($color);
+  }
+}
+
 /* Apply sizes to elements */
+
+h1 {
+    color: var(--highlight-color);
+}
+
 body {
     color: var(--text-color);
     background: var(--background-color);
@@ -39,6 +104,10 @@ a {
 
 a:hover {
     color: var(--highlight-color);
+}
+
+a:visited {
+    color: var(--secondary-color) !important;
 }
 
 input, select {

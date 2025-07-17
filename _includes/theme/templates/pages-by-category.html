@@ -1,7 +1,13 @@
+{%- if include.categories and include.categories != blank -%}
+  {%- assign include.categories = include.categories | split: "," | map: "strip" -%}
+{%- endif -%}
 {%- query var="results" group_by="category" order_by="title" order="asc" -%}
 {%- for parent in results -%}
-{%- assign id = "category-" | append: parent.category.name -%}
-{%- assign name = parent.category.name -%}
-<h3 id="{{ id }}">{{ name }}</h3>
-{%- include theme/pages/list/unordered.html pages=parent.children -%}
+  {%- assign category_name = parent.category.name -%}
+  {%- if include.categories == nil or include.categories contains category_name -%}
+    {%- assign id = "category-" | append: category_name -%}
+    {%- assign name = category_name -%}
+    <h3 id="{{ id }}">{{ name }}</h3>
+    {%- include theme/pages/list/unordered.html pages=parent.children hide_title=include.hide_title hide_date=include.hide_date hide_categories=include.hide_categories show_description=include.show_description -%}
+  {%- endif -%}
 {%- endfor -%}
