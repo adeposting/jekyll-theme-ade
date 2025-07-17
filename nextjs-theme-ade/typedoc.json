@@ -1,0 +1,12 @@
+{
+  "entryPoints": ["src"],
+  "out": "docs",
+  "theme": "default",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "readme": "README.md",
+  "name": "NextJS Theme ADE",
+  "tsconfig": "tsconfig.json"
+}
