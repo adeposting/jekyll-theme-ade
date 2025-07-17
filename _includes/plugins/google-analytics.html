@@ -1,7 +1,13 @@
 {{ }}
 <!-- jekyll-plugin-google-analytics -->
-{% if site.google_analytics and not site.debug-%}
-<script src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-<script src="/assets/plugins/google-analytics/google-analytics.js"></script>
+{% if not site.debug-%}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P6CV5KG58H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P6CV5KG58H');
+</script>
 {%- endif %}
 {{ }}
