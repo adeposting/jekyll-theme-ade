@@ -1,26 +1,147 @@
 @import "tailwindcss";
 
+/* Custom CSS Variables for Theme Colors */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #ec4899; /* Pink-500 */
+  --color-secondary: #10b981; /* Green-500 */
+  --color-tertiary: #3b82f6; /* Blue-500 */
+  --color-accent: #f59e0b; /* Amber-500 */
+  --background: #111827; /* Gray-900 */
+  --foreground: #f9fafb; /* Gray-50 */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Dark theme base styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Typography improvements */
+.prose {
+  color: #f9fafb;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: #ffffff;
+}
+
+.prose a {
+  color: #f472b6;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: #fbbf24;
+}
+
+.prose code {
+  background-color: #1f2937;
+  color: #f472b6;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.prose pre {
+  background-color: #1f2937;
+  border: 1px solid #374151;
+}
+
+.prose blockquote {
+  border-left: 4px solid #ec4899;
+  background-color: #1f2937;
+  color: #d1d5db;
+}
+
+/* Search highlight styles */
+mark {
+  background-color: #ec4899;
+  color: #ffffff;
+  padding: 0.125rem;
+  border-radius: 0.25rem;
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ec4899, 0 0 0 4px #111827;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Loading skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #374151 25%, #4b5563 50%, #374151 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    color: #000000;
+    background: #ffffff;
+  }
 }

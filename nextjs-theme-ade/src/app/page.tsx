@@ -1,103 +1,177 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { getAllPosts } from '@/lib/content';
+import { Button } from '@/components/ui/Button';
+import { Icon } from '@/components/ui/Icon';
 
-export default function Home() {
+export default async function Home() {
+  const posts = await getAllPosts();
+  const recentPosts = posts.slice(0, 3);
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Hero Section */}
+      <section className="text-center py-16">
+        <div className="max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
+            Welcome to{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-green-500">
+              NextJS Theme ADE
+            </span>
+          </h1>
+          <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+            A modern, performant blog theme built with Next.js and TypeScript. 
+            Featuring advanced search, dynamic content queries, and a beautiful dark theme.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="primary" size="lg">
+              <Link href="/blog" className="flex items-center">
+                Explore Posts
+                <Icon name="arrow_right" size="sm" className="ml-2" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg">
+              <Link href="/about" className="flex items-center">
+                Learn More
+                <Icon name="external_link" size="sm" className="ml-2" />
+              </Link>
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Powerful Features
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Built with modern web technologies and best practices for optimal performance and developer experience.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <div className="w-12 h-12 bg-pink-500 rounded-lg flex items-center justify-center mb-4">
+              <Icon name="search" size="md" color="white" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Advanced Search</h3>
+            <p className="text-gray-400">
+              Real-time search with fuzzy matching, suggestions, and advanced filtering capabilities.
+            </p>
+          </div>
+          
+          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center mb-4">
+              <Icon name="folder" size="md" color="white" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Content Management</h3>
+            <p className="text-gray-400">
+              Markdown-based content with frontmatter support, syntax highlighting, and table of contents.
+            </p>
+          </div>
+          
+          <div className="bg-gray-800 rounded-lg p-6 border border-gray-700">
+            <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center mb-4">
+              <Icon name="external_link" size="md" color="white" />
+            </div>
+            <h3 className="text-xl font-semibold text-white mb-2">Performance First</h3>
+            <p className="text-gray-400">
+              Static site generation, code splitting, and optimized images for lightning-fast loading.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Recent Posts Section */}
+      {recentPosts.length > 0 && (
+        <section className="py-16">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold text-white">Recent Posts</h2>
+            <Link
+              href="/blog"
+              className="text-pink-400 hover:text-pink-300 transition-colors flex items-center"
+            >
+              View all posts
+              <Icon name="arrow_right" size="sm" className="ml-1" />
+            </Link>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {recentPosts.map((post) => (
+              <article
+                key={post.slug}
+                className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 hover:border-gray-600 transition-colors"
+              >
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-400 mb-2">
+                    <Icon name="calendar" size="sm" className="mr-1" />
+                    {post.date.toLocaleDateString()}
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-2 hover:text-pink-400 transition-colors">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  {post.excerpt && (
+                    <p className="text-gray-400 mb-4 line-clamp-3">
+                      {post.excerpt}
+                    </p>
+                  )}
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {post.categories.slice(0, 2).map((category) => (
+                      <span
+                        key={category}
+                        className="px-2 py-1 bg-gray-700 text-gray-300 text-xs rounded-full"
+                      >
+                        {category}
+                      </span>
+                    ))}
+                  </div>
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="text-pink-400 hover:text-pink-300 transition-colors text-sm font-medium flex items-center"
+                  >
+                    Read more
+                    <Icon name="arrow_right" size="sm" className="ml-1" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* CTA Section */}
+      <section className="py-16 text-center">
+        <div className="bg-gradient-to-r from-pink-500 to-green-500 rounded-lg p-8">
+          <h2 className="text-3xl font-bold text-white mb-4">
+            Ready to Get Started?
+          </h2>
+          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
+            Explore the blog, search for topics that interest you, or learn more about the technology behind this theme.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="secondary" size="lg">
+              <Link href="/search" className="flex items-center">
+                <Icon name="search" size="sm" className="mr-2" />
+                Search Posts
+              </Link>
+            </Button>
+            <Button variant="outline" size="lg">
+              <a
+                href="https://github.com/your-username/nextjs-theme-ade"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <Icon name="github" size="sm" className="mr-2" />
+                View Source
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
